@@ -7,6 +7,8 @@ networks:
 volumes:
     prometheus_data: {}
     grafana_data: {}
+    caddy-data:
+    caddy-config:
 
 services:
     prometheus:
@@ -120,7 +122,9 @@ services:
             - '9093:9093'
             - '9091:9091'
         volumes:
-            - /var/searxng/Caddyfile:/etc/caddy/Caddyfile:ro:/etc/caddy/Caddyfile:ro
+          - /var/searxng/Caddyfile:/etc/caddy/Caddyfile:ro
+          - caddy-data:/data:rw
+          - caddy-config:/config:rw
         environment:
             - ADMIN_USER=${ADMIN_USER}
             - ADMIN_PASSWORD=${ADMIN_PASSWORD}
