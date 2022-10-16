@@ -16,7 +16,7 @@ services:
         container_name: prometheus
         volumes:
             - ./prometheus:/etc/prometheus
-            - prometheus_data:/prometheus
+            - /var/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
         command:
             - '--config.file=/etc/prometheus/prometheus.yml'
             - '--storage.tsdb.path=/prometheus'
@@ -122,7 +122,7 @@ services:
             - '9093:9093'
             - '9091:9091'
         volumes:
-          - /var/searxng/Caddyfile:/etc/caddy/Caddyfile:ro
+          - /var/prometheus/Caddyfile:/etc/caddy/Caddyfile:ro
           - caddy-data:/data:rw
           - caddy-config:/config:rw
         environment:
