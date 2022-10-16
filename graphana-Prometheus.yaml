@@ -115,7 +115,7 @@ services:
 
     caddy:
         image: stefanprodan/caddy
-        container_name: caddy
+        container_name: caddy-prometheus
         ports:
             - '3000:3000'
             - '9090:9090'
